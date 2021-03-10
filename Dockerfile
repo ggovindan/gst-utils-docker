@@ -45,7 +45,7 @@ RUN cd aws-sdk-cpp/sdk_build && make && make install
 
 
 # this is for debugging with clion
-CMD ["/usr/sbin/sshd", "-D", "-e", "-f", "/etc/ssh/sshd_config_test_clion"]
+# CMD ["/usr/sbin/sshd", "-D", "-e", "-f", "/etc/ssh/sshd_config_test_clion"]
 
 
 ## command to build it
