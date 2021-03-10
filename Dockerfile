@@ -11,7 +11,7 @@ RUN apt-get update \
       libtbb2 libtbb-dev libdc1394-22-dev python3-dev libgirepository1.0-dev \
       libcairo2-dev python3-gi libcairo2-dev gir1.2-gstreamer-1.0 libtool python-gi-dev \
       python3 python3-pip python3-setuptools python3-wheel ninja-build vim rsync libssl-dev \
-      curl libcurl4-openssl-dev \
+      curl libcurl4-openssl-dev liborc-0.4-dev \
   && apt-get clean
 
 RUN ( \
