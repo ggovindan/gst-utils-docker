@@ -1,0 +1,13 @@
+FROM ubuntu:20.10
+
+COPY install-dependencies /
+
+RUN ["/install-dependencies"]
+
+RUN cd /tmp/ && git clone https://gitlab.freedesktop.org/gstreamer/gst-build.git && \
+    mkdir -p /tmp/gst-build/build_dir/ && \
+    cd /tmp/gst-build && \
+    git checkout 1.18 && \
+    meson build_dir \
+            --prefix=/usr/ && \
+            ninja -C /tmp/gst-build/build_dir/ install
