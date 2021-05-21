@@ -11,3 +11,24 @@ RUN cd /tmp/ && git clone https://gitlab.freedesktop.org/gstreamer/gst-build.git
     meson build_dir \
             --prefix=/usr/ && \
             ninja -C /tmp/gst-build/build_dir/ install
+
+RUN ( \
+    echo 'LogLevel DEBUG2'; \
+    echo 'PermitRootLogin yes'; \
+    echo 'PasswordAuthentication yes'; \
+    echo 'Subsystem sftp /usr/lib/openssh/sftp-server'; \
+  ) > /etc/ssh/sshd_config_test_clion \
+  && mkdir /run/sshd
+
+
+RUN useradd -m user \
+  && yes password | passwd user
+# COPY ./ /webrtc_stream
+
+# RUN pip3 install  -r /webrtc_stream/requirements.txt
+
+# RUN cd /webrtc_stream && /usr/bin/cmake .
+# RUN cd /webrtc_stream && /usr/bin/make
+
+# this is for debugging with clion
+CMD ["/usr/sbin/sshd", "-D", "-e", "-f", "/etc/ssh/sshd_config_test_clion"]
